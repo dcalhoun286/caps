@@ -16,7 +16,7 @@
   - [Stack Overflow](https://stackoverflow.com/questions/30158574/how-to-convert-result-from-date-now-to-yyyy-mm-dd-hhmmss-ffff)
   - [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toString)
 - Faker Generator:
-  - [NPM docs](https://www.npmjs.com/package/faker)
+  - [NPM docs: faker.js](https://www.npmjs.com/package/faker)
   - [GitHub: Marak](https://github.com/Marak/faker.js/wiki/Address)
 - Testing `console.log`:
   - [Stack Overflow](https://stackoverflow.com/questions/49096093/how-do-i-test-a-jest-console-log)
