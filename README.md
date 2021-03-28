@@ -6,6 +6,10 @@
 
 - [Dar-Ci Calhoun](https://github.com/dcalhoun286)
 
+## Links
+
+- [Pull Request](https://github.com/dcalhoun286/caps/pull/1)
+
 ## Resources and Collaborators
 
 - Using the `Date` object
