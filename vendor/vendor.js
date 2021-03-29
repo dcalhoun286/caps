@@ -22,7 +22,7 @@ class Vendor {
       customerName: faker.name.findName(),
       timeOfPurchase: timestamp(),
       shippingAddress: `${faker.address.streetAddress('###')}, ${faker.address.city()}, ${faker.address.stateAbbr} ${faker.address.zipCode('#####')}`,
-      orderId: faker.random.uuid()
+      orderId: faker.datatype.uuid()
     }
 
     // push into fake db to keep track of order statuses until they need to be deleted
@@ -32,6 +32,8 @@ class Vendor {
     return productOrder;
   }
 }
+
+// Documentation: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals
 
 function deliveryComplete(payload) {
 
