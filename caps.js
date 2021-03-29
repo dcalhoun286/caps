@@ -21,7 +21,7 @@ event.on('delivered', vendor.deliveryComplete);
 */
 
 // emit a 'pickup' event every 5 seconds (5000 ms)
-setInterval(() => {
+let createOrder = setInterval(() => {
   event.emit('pickup', {
     payload: order.create(),
     event: 'pickup',
@@ -30,3 +30,7 @@ setInterval(() => {
   });
   console.log(`STATUS: ready for pickup`);
 }, 5000);
+
+module.exports = {
+  createOrder: createOrder,
+}
