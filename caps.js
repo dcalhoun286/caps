@@ -17,7 +17,7 @@ event.on('in-transit', driver.orderDelivered);
 event.on('delivered', vendor.deliveryComplete);
 
 /*
-  Reminder: I used the solution that Stack Overflow user Madera's Ghost posted on 10 Apr 2016https://stackoverflow.com/questions/36530438/events-in-nodejs-event-is-being-emitted-within-setinterval-but-not-without-se
+  Documentation: I used the solution that Stack Overflow user Madera's Ghost posted on 10 Apr 2016 to help me write how to emit an event in a set interval https://stackoverflow.com/questions/36530438/events-in-nodejs-event-is-being-emitted-within-setinterval-but-not-without-se
 */
 
 // emit a 'pickup' event every 5 seconds (5000 ms)
