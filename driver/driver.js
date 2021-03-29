@@ -1,5 +1,7 @@
 'use strict';
 
+const event = require('../events.js');
+
 function timestamp() {
   return new Date().toDateString();
 }
@@ -13,9 +15,23 @@ function orderPickedUp(payload) {
     payload.event = 'pickup';
     console.log(`STATUS: ${payload.event}`);
     console.log(`DRIVER: picked up ${payload.payload.orderId}`); 
+    event.emit('in-transit', payload);
   }, 1000);
+}
+
+function orderDelivered(payload) {
+
+  function testFunction() {
+    console.log('TEST -- in-transit event working properly');
+  }
+
+  // wait 3 seconds after 'in-transit' event is emitted to run this
+  setTimeout(() => {
+    testFunction();
+  }, 3000);
 }
 
 module.exports = {
   orderPickedUp,
+  orderDelivered
 }

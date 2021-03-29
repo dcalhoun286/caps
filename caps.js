@@ -13,7 +13,7 @@ function timestamp() {
 }
 
 event.on('pickup', driver.orderPickedUp);
-// event.on('in-transit', orderDelivered);
+event.on('in-transit', driver.orderDelivered);
 // event.on('delivered', vendor.deliveryComplete);
 
 /*
