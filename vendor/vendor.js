@@ -37,8 +37,8 @@ class Vendor {
 
 function deliveryComplete(payload) {
 
-  payload.event = 'delivered';
-  console.log(`${Vendor.storeName}: Thank you for completing your delivery!`);
+  payload.event = 'thank-you';
+  console.log(`${payload.payload.storeName}: Thank you for completing your delivery!`);
 }
 
 module.exports = {

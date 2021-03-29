@@ -6,7 +6,7 @@ const driver = require('./driver/driver.js');
 const vendor = require('./vendor/vendor.js');
 const event = require('./events.js');
 
-const order = new vendor.Vendor();;
+const order = new vendor.Vendor();
 
 function timestamp() {
   return new Date().toDateString();
@@ -14,7 +14,7 @@ function timestamp() {
 
 event.on('pickup', driver.orderPickedUp);
 event.on('in-transit', driver.orderDelivered);
-// event.on('delivered', vendor.deliveryComplete);
+event.on('delivered', vendor.deliveryComplete);
 
 /*
   Reminder: I used the solution that Stack Overflow user Madera's Ghost posted on 10 Apr 2016https://stackoverflow.com/questions/36530438/events-in-nodejs-event-is-being-emitted-within-setinterval-but-not-without-se
