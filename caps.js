@@ -26,6 +26,7 @@ setInterval(() => {
     payload: order.create(),
     event: 'pickup',
     // without this property, the other asynchronous functions that follow wouldn't know when to run??
-    time: timestamp()
+    time: timestamp(),
   });
+  console.log(`STATUS: ready for pickup`);
 }, 5000);
