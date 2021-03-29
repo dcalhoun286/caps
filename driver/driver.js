@@ -12,22 +12,26 @@ function timestamp() {
 function orderPickedUp(payload) {
   setTimeout(() => {
     payload.time = timestamp();
-    payload.event = 'pickup';
+    payload.event = 'in-transit';
+    console.log(`DRIVER: picked up order ${payload.payload.orderId}`); 
     console.log(`STATUS: ${payload.event}`);
-    console.log(`DRIVER: picked up ${payload.payload.orderId}`); 
-    event.emit('in-transit', payload);
+    event.emit(`${payload.event}`, payload);
   }, 1000);
 }
 
 function orderDelivered(payload) {
 
-  function testFunction() {
-    console.log('TEST -- in-transit event working properly');
-  }
+  // function testFunction() {
+  //   console.log('TEST -- in-transit event working properly');
+  // }
 
   // wait 3 seconds after 'in-transit' event is emitted to run this
   setTimeout(() => {
-    testFunction();
+    payload.time = timestamp();
+    payload.event = 'delivered';
+    console.log(`DRIVER: delivered order ${payload.payload.orderId}`); 
+    console.log(`STATUS: ${payload.event}`);
+    event.emit(`${payload.event}`, payload);
   }, 3000);
 }
 
