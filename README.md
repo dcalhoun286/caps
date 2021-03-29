@@ -20,4 +20,6 @@
   - [GitHub: Marak](https://github.com/Marak/faker.js/wiki/Address)
 - Testing `console.log`:
   - [Stack Overflow](https://stackoverflow.com/questions/49096093/how-do-i-test-a-jest-console-log)
-- [MDN Docs: Timeouts and Intervals](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals)
+- Timeouts and Intervals
+  - [MDN Docs: Timeouts and Intervals](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals)
+  - [Stack Overflow](https://stackoverflow.com/questions/36530438/events-in-nodejs-event-is-being-emitted-within-setinterval-but-not-without-se)
