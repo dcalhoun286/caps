@@ -5,8 +5,6 @@ const driver = require('../driver/driver.js');
 const vendor = require('../vendor/vendor.js');
 const faker = require('faker');
 
-// const order = new vendor.Vendor();
-
 function timestamp() {
   return new Date().toDateString();
 }
@@ -29,15 +27,15 @@ describe('====== Communications Test ======', () => {
 
   jest.useFakeTimers();
 
-  // consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+  beforeEach(() => {
+    consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+  });
 
-
-  // afterEach(() => {
-  //   consoleSpy.mockClear();
-  // });
+  afterEach(() => {
+    consoleSpy.mockRestore();
+  })
 
   it('waits 5 seconds before creating an order', () => {
-    // const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
 
     caps.createOrder();
   
@@ -46,7 +44,6 @@ describe('====== Communications Test ======', () => {
   });
 
   it('vendor notifies driver that order is ready for pickup', () => {
-    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
 
     caps.createOrder();
    
@@ -59,7 +56,6 @@ describe('====== Communications Test ======', () => {
   });
 
   it('driver notifies vendor that order is in-transit', () => {
-    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
 
     driver.orderPickedUp(test);
 
@@ -71,7 +67,6 @@ describe('====== Communications Test ======', () => {
   });
 
   it('driver notifies vendor that order is delivered', () => {
-    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
     
     driver.orderDelivered(test);
     
@@ -83,7 +78,6 @@ describe('====== Communications Test ======', () => {
   });
 
   it('vendor thanks driver for making delivery', () => {
-    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
 
     vendor.deliveryComplete(test);
     expect(consoleSpy).toHaveBeenCalled();
