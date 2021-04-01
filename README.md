@@ -12,6 +12,9 @@
 
 ## Resources and Collaborators
 
+- Debugging tests
+  - Kory Jackson (TA)
+  - Kristian Esvelt (TA)
 - Using the `Date` object
   - [Stack Overflow](https://stackoverflow.com/questions/30158574/how-to-convert-result-from-date-now-to-yyyy-mm-dd-hhmmss-ffff)
   - [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toString)
