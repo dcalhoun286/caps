@@ -1,48 +1,91 @@
 'use strict';
 
 const caps = require('../caps.js');
-
 const driver = require('../driver/driver.js');
-
+const vendor = require('../vendor/vendor.js');
 const faker = require('faker');
 
-const vendor = require('../vendor/vendor.js');
-
-const order = new vendor.Vendor();
+// const order = new vendor.Vendor();
 
 function timestamp() {
   return new Date().toDateString();
 }
 
-let testPayload = {
-  event: 'pickup',
-  time: timestamp(),
-  payload: {
-    storeName: 'Garden Galore',
-    customerName: faker.name.findName(),
-    timeOfPurchase: timestamp(),
-    shippingAddress: `${faker.address.streetAddress('###')}, ${faker.address.city()}, ${faker.address.stateAbbr} ${faker.address.zipCode('#####')}`,
-    orderId: faker.datatype.uuid() 
-  }
-}
-
-console.log = jest.fn();
-
 describe('====== Communications Test ======', () => {
-  it('vendor notifies driver that order is ready for pickup', () => {
-    let test = caps.createOrder();
 
-    expect(console.log).toHaveBeenCalled();
-    clearInterval(test);
+  let consoleSpy;
+
+  let test = {
+    time: timestamp(),
+    event: 'pickup',
+    payload: {
+      storeName: 'Garden Galore',
+      customerName: 'George Stewart',
+      timeOfPurchase: timestamp(),
+      shippingAddress: `85 `,
+      orderId: faker.datatype.uuid()
+    }
+  }
+
+  jest.useFakeTimers();
+
+  // consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+
+
+  // afterEach(() => {
+  //   consoleSpy.mockClear();
+  // });
+
+  it('waits 5 seconds before creating an order', () => {
+    // const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+
+    caps.createOrder();
+  
+    expect(setInterval).toHaveBeenCalledTimes(1);
+    expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 5000);
+  });
+
+  it('vendor notifies driver that order is ready for pickup', () => {
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+
+    caps.createOrder();
+   
+    setTimeout(() => {
+      expect(consoleSpy).toHaveBeenCalled();
+    });
+    
+
+
   });
 
   it('driver notifies vendor that order is in-transit', () => {
-    driver.orderPickedUp(testPayload);
-    expect(console.log).toHaveBeenCalled();
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+
+    driver.orderPickedUp(test);
+
+    setTimeout(() => {
+
+      expect(consoleSpy).toHaveBeenCalled();
+    });
+
   });
 
   it('driver notifies vendor that order is delivered', () => {
-    driver.orderDelivered(testPayload);
-    expect(console.log).toHaveBeenCalled();
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+    
+    driver.orderDelivered(test);
+    
+    setTimeout(() => {
+
+      expect(consoleSpy).toHaveBeenCalled();
+    });
+  
+  });
+
+  it('vendor thanks driver for making delivery', () => {
+    const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+
+    vendor.deliveryComplete(test);
+    expect(consoleSpy).toHaveBeenCalled();
   });
 });
