@@ -21,15 +21,19 @@ event.on('delivered', vendor.deliveryComplete);
 */
 
 // emit a 'pickup' event every 5 seconds (5000 ms)
-let createOrder = setInterval(() => {
-  event.emit('pickup', {
-    payload: order.create(),
-    event: 'pickup',
-    // without this property, the other asynchronous functions that follow wouldn't know when to run??
-    time: timestamp(),
-  });
-  console.log(`STATUS: ready for pickup`);
-}, 5000);
+let createOrder = () => {
+  setInterval(() => {
+    event.emit('pickup', {
+      payload: order.create(),
+      event: 'pickup',
+      // without this property, the other asynchronous functions that follow wouldn't know when to run??
+      time: timestamp(),
+    });
+    console.log(`STATUS: ready for pickup`);
+  }, 5000);
+}
+
+createOrder();
 
 module.exports = {
   createOrder: createOrder,
