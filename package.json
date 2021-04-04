@@ -1,0 +1,28 @@
+{
+  "name": "caps",
+  "version": "1.0.0",
+  "description": "- **CAPS Phase 1**: For this lab assignment, I built a system that simulates a simple driver- and vendor-communication that tracks stages of shipment and delivery.",
+  "scripts": {
+    "test": "jest --coverage --verbose",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "start": "nodemon caps.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcalhoun286/caps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcalhoun286/caps/issues"
+  },
+  "homepage": "https://github.com/dcalhoun286/caps#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "faker": "^5.5.2",
+    "jest": "^26.6.3"
+  },
+  "main": "caps.js",
+  "devDependencies": {}
+}
